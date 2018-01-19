@@ -1,0 +1,4 @@
+--type-add
+css=.sass
+
+--ignore-dir=_site
