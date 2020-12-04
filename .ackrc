@@ -2,3 +2,6 @@
 css=.sass
 
 --ignore-dir=_site
+--ignore-dir=dist
+--ignore-file=match:dist.js
+--ignore-dir=__snapshots__

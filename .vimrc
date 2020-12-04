@@ -1,4 +1,4 @@
-" ==============
+"==============
 " Basic Settings
 " ==============
 set number " line numbers
@@ -45,6 +45,7 @@ highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
 autocmd BufWrite *.py match OverLength /\%81v.*/
 autocmd BufWrite *.md match OverLength /\%81v.*/
 autocmd BufWrite *.js match OverLength /\%101v.*/
+autocmd BufWrite *.jsx match OverLength /\%101v.*/
 
 " highlight exra whitespace
 :highlight ExtraWhitespace ctermbg=red guibg=red
@@ -64,6 +65,7 @@ func! DeleteTrailingWS()
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.js :call DeleteTrailingWS()
+autocmd BufWrite *.jsx :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " misc file-type syntax highlighting
@@ -79,11 +81,13 @@ au BufEnter *.py set ai sw=4 ts=4 sta et
 au BufEnter *.html set ai sw=2 ts=2 sta et
 au BufEnter *.hb set ai sw=2 ts=2 sta et
 au BufEnter *.js set ai sw=2 ts=2 sta et
+au BufEnter *.jsx set ai sw=2 ts=2 sta et
 au BufEnter *.sass set ai sw=2 ts=2 sta et
 au BufEnter *.scss set ai sw=2 ts=2 sta et
-au BufEnter *.less set ai sw=4 ts=4 sta et
+au BufEnter *.less set ai sw=2 ts=2 sta et
 au BufEnter *.css set ai sw=4 ts=4 sta et
 au BufEnter *.conf set ai sw=4 ts=4 sta et
+au BufEnter *.json set ai sw=2 ts=2 sta et
 
 " =============
 " Miscellaneous
@@ -100,8 +104,12 @@ au BufEnter *.conf set ai sw=4 ts=4 sta et
 " press Space to turn off highlighting and clear any message already displayed.
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 
+" hit F2 key to show tabs and endlines
+:set noexpandtab
+:nnoremap <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
+
 " Syntastic for hooking up jshint to vim
-" execute pathogen#infect()
+execute pathogen#infect()
 " let g:syntastic_javascript_checkers = ['jshint']
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_error_symbol = '!'
