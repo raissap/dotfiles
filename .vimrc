@@ -31,7 +31,7 @@ au VimResized * exe "normal! \<c-w>="
 " Color Scheme
 " ============
 syntax on " syntax highlighting
-colorscheme elflord " default color scheme
+colorscheme desert " default color scheme
 
 " line numbers color
 :highlight LineNr ctermfg=red
@@ -46,11 +46,16 @@ autocmd BufWrite *.py match OverLength /\%81v.*/
 autocmd BufWrite *.md match OverLength /\%81v.*/
 autocmd BufWrite *.js match OverLength /\%101v.*/
 autocmd BufWrite *.jsx match OverLength /\%101v.*/
+autocmd BufWrite *.ts match OverLength /\%101v.*/
+autocmd BufWrite *.tsx match OverLength /\%101v.*/
 
 " highlight exra whitespace
 :highlight ExtraWhitespace ctermbg=red guibg=red
 :autocmd Syntax *.py syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 :autocmd Syntax *.js syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+:autocmd Syntax *.jsx syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+:autocmd Syntax *.ts syn match ExtraWhitespace /\s\+$\| \+\ze\t/
+:autocmd Syntax *.tsx syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 :autocmd Syntax *.hb syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 :autocmd Syntax *.html syn match ExtraWhitespace /\s\+$\| \+\ze\t/
 :autocmd Syntax *.md syn match ExtraWhitespace /\s\+$\| \+\ze\t/
@@ -66,6 +71,8 @@ endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.js :call DeleteTrailingWS()
 autocmd BufWrite *.jsx :call DeleteTrailingWS()
+autocmd BufWrite *.ts :call DeleteTrailingWS()
+autocmd BufWrite *.tsx :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " misc file-type syntax highlighting
@@ -82,6 +89,9 @@ au BufEnter *.html set ai sw=2 ts=2 sta et
 au BufEnter *.hb set ai sw=2 ts=2 sta et
 au BufEnter *.js set ai sw=2 ts=2 sta et
 au BufEnter *.jsx set ai sw=2 ts=2 sta et
+au BufEnter *.ts set ai sw=2 ts=2 sta et
+au BufEnter *.tsx set ai sw=2 ts=2 sta et
+au BufEnter *.ts set ai sw=2 ts=2 sta et
 au BufEnter *.sass set ai sw=2 ts=2 sta et
 au BufEnter *.scss set ai sw=2 ts=2 sta et
 au BufEnter *.less set ai sw=2 ts=2 sta et
@@ -114,3 +124,7 @@ execute pathogen#infect()
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_error_symbol = '!'
 " let g:syntastic_warning_symbol = '?'
+
+" Set up Typescript highlighting (assuming v8+)
+" git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/pack/typescript/start/typescript-vim
+" https://github.com/leafgarland/typescript-vim
