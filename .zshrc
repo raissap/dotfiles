@@ -1,5 +1,6 @@
 ################################################
 # Add the following code to your ~/.zshrc file #
+#                                              #
 # if [ -f ~/dotfiles/.zshrc]; then             #
 #     source ~/dotfiles/.zshrc                 #
 # fi                                           #
@@ -32,7 +33,7 @@ PROMPT="${YELLOW}[${PURPLE}\$(cmdline_current_git_branch)${CYAN}%~${YELLOW}]${WH
 # ls colors
 # https://www.cyberciti.biz/faq/apple-mac-osx-terminal-color-ls-output-option/
 export CLICOLOR=1
-export LSCOLORS=Gxfxcxdxbxegedabagacad
+export LSCOLORS=Exfxcxdxbxegedabagacad
 
 # Global aliases
 alias ls="ls -a"

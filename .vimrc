@@ -1,9 +1,23 @@
-"==============
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set up a symlink to this file in the home directory "
+"                                                     "
+" $ ln -s ~/dotfiles/.vimrc ~/.vimrc                  "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set up Typescript highlighting (assuming v8+)                 "
+" https://github.com/leafgarland/typescript-vim                 "
+"                                                               "
+" $ git clone https://github.com/leafgarland/typescript-vim.git "
+" $ ~/.vim/pack/typescript/start/typescript-vim                 "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" ==============
 " Basic Settings
 " ==============
 set number " line numbers
-set wildmenu " tab auto completion
-set wildmode=list:full " show tab automplete list
+set wildmenu " menu tab auto completion
+set wildmode=list:longest,full " displays all options in tab automplete list
 set cmdheight=2 " height of command bar
 set statusline=%f " show filename
 set laststatus=2 " make statusline visible
@@ -98,6 +112,7 @@ au BufEnter *.less set ai sw=2 ts=2 sta et
 au BufEnter *.css set ai sw=4 ts=4 sta et
 au BufEnter *.conf set ai sw=4 ts=4 sta et
 au BufEnter *.json set ai sw=2 ts=2 sta et
+au BufEnter *.yml set ai sw=2 ts=2 sta et
 
 " =============
 " Miscellaneous
@@ -119,12 +134,8 @@ au BufEnter *.json set ai sw=2 ts=2 sta et
 :nnoremap <F2> :<C-U>setlocal lcs=tab:>-,trail:-,eol:$ list! list? <CR>
 
 " Syntastic for hooking up jshint to vim
-execute pathogen#infect()
+" execute pathogen#infect()
 " let g:syntastic_javascript_checkers = ['jshint']
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_error_symbol = '!'
 " let g:syntastic_warning_symbol = '?'
-
-" Set up Typescript highlighting (assuming v8+)
-" git clone https://github.com/leafgarland/typescript-vim.git ~/.vim/pack/typescript/start/typescript-vim
-" https://github.com/leafgarland/typescript-vim

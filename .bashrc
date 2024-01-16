@@ -46,6 +46,10 @@ function push {
 }
 
 function force-push {
+	if [[ $(current_git_branch) == "main" ]]; then
+		echo "DON'T FORCE-PUSH TO MAIN WTF"
+		return
+	fi
 	if [[ $(current_git_branch) == "master" ]]; then
 		echo "DON'T FORCE-PUSH TO MASTER WTF"
 		return
