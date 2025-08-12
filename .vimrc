@@ -109,10 +109,12 @@ au BufEnter *.ts set ai sw=2 ts=2 sta et
 au BufEnter *.sass set ai sw=2 ts=2 sta et
 au BufEnter *.scss set ai sw=2 ts=2 sta et
 au BufEnter *.less set ai sw=2 ts=2 sta et
-au BufEnter *.css set ai sw=4 ts=4 sta et
+au BufEnter *.css set ai sw=2 ts=2 sta et
 au BufEnter *.conf set ai sw=4 ts=4 sta et
 au BufEnter *.json set ai sw=2 ts=2 sta et
 au BufEnter *.yml set ai sw=2 ts=2 sta et
+au BufEnter *.yaml set ai sw=2 ts=2 sta et
+au BufEnter *.md set ai sw=2 ts=2 sta et
 
 " =============
 " Miscellaneous
