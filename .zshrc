@@ -60,3 +60,18 @@ function force-push {
     fi
     git push origin $(current_git_branch) --force
 }
+function delete-branches {
+    local branches
+    branches=$(git for-each-ref --format='%(refname:short)' refs/heads/ \
+        | grep -v "^${current_git_branch}$")
+
+    if [[ -z "$branches" ]]; then
+        echo "No branches to delete"
+        return
+    fi
+
+    echo "Deleting branches:"
+    echo "$branches"
+
+    echo "$branches" | xargs -n 1 git branch -d
+}
