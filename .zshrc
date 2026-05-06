@@ -73,5 +73,5 @@ function delete-branches {
     echo "Deleting branches:"
     echo "$branches"
 
-    echo "$branches" | xargs -n 1 git branch -d
+    echo "$branches" | xargs -n 1 git branch -D
 }
