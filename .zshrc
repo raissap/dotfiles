@@ -6,6 +6,9 @@
 # fi                                           #
 ################################################
 
+autoload -Uz compinit
+compinit
+
 # Extract the current branch name
 function current_git_branch {
     branch=$(git symbolic-ref HEAD 2>/dev/null) || return
@@ -60,15 +63,42 @@ function force-push {
     fi
     git push origin $(current_git_branch) --force
 }
+# delete-branches <branches> <to> <ignore>
 function delete-branches {
-    local branches
+    local branches ignored
+
     branches=$(git for-each-ref --format='%(refname:short)' refs/heads/ \
         | grep -v "^$(current_git_branch)$")
+
+    for ignored in "$@"; do
+        branches=$(echo "$branches" | grep -v -x "$ignored")
+    done
 
     if [[ -z "$branches" ]]; then
         echo "No branches to delete"
         return
     fi
 
+    echo "The following branches will be deleted:"
+    echo "$branches"
+    echo
+    read "?Press Enter to continue or Ctrl+C to cancel..."
+
     echo "$branches" | xargs -n 1 git branch -D
 }
+# Enables tab completion of branch names
+_delete_branches_completion() {
+	local -a branches ignored
+	local branch
+
+	branches=("${(@f)$(git for-each-ref --format='%(refname:short)' refs/heads/ 2>/dev/null)}")
+
+	# Don't tab complete current branch or already included branches
+	ignored=("$(current_git_branch)" "${words[@]:1}")
+	for branch in "${ignored[@]}"; do
+		branches=("${(@)branches:#$branch}")
+	done
+
+	compadd -- "${branches[@]}"
+}
+compdef _delete_branches_completion delete-branches
