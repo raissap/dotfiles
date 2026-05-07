@@ -28,6 +28,7 @@ PURPLE=$'%{\e[38;5;135m%}' # Purple
 MAGENTA=$'%{\e[0;35m%}'    # Magenta
 CYAN=$'%{\e[0;36m%}'       # Cyan
 WHITE=$'%{\e[0;37m%}'      # White
+RESET=$'%{\e[0;0m%}'       # Reset
 
 # Prompt color scheme and customization
 setopt PROMPT_SUBST
@@ -80,7 +81,7 @@ function delete-branches {
     fi
 
     echo "The following branches will be deleted:"
-    echo "$branches"
+    print -P "${RED}${(F)branches}${RESET}"
     echo
     read "?Press Enter to continue or Ctrl+C to cancel..."
 
